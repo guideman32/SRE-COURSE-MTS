@@ -1,0 +1,43 @@
+affinity: {}
+autoscaling: {}
+fullnameOverride: ""
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/ldest/sre-course/api
+  tag: c4f3862
+imagePullSecrets: []
+ingress:
+  annotations: {}
+  className: nginx
+  enabled: true
+  hosts:
+  - host: weather-api.sre-course.example
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
+  tls: []
+nameOverride: ""
+nodeSelector: {}
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+replicaCount: 2
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+securityContext: {}
+service:
+  port: 8082
+  type: ClusterIP
+serviceAccount: {}
+tolerations: []
+variables:
+  ASPNETCORE_URLS: http://*:8082
+  CONNECTIONSTRINGS__PgConnection: server=91.185.86.175; port=5000; database=weather;
+    user id=postgres; password=postgres-pass;
+volumeMounts: []
+volumes: []
